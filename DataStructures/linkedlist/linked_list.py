@@ -22,7 +22,7 @@ class LinkedList:
             self.head = temp
         else:
             current = self.head
-            while current!=None:
+            while current != None:
                 current = current.next
 
             current.next = temp
@@ -32,7 +32,7 @@ class LinkedList:
             return
 
         current = self.head
-        while current!=None and current.data!=key:
+        while current != None and current.data != key:
             current = current.next
 
         if current is None: return False
@@ -41,13 +41,13 @@ class LinkedList:
     def __repr__(self):
         current = self.head
         print_list = []
-        while current!=None:
+        while current != None:
             print_list.append(current.data)
             current = current.next
 
-        print (print_list)
+        print(print_list)
 
-    def _remove(self,key):
+    def _remove(self, key):
         "remove only the first occurence"
 
         if self.head is None: return
@@ -55,7 +55,7 @@ class LinkedList:
         previous = None
         current = self.head
 
-        while current!=None and current.data!=key:
+        while current != None and current.data != key:
             previous = current
             current = current.next
 
@@ -65,6 +65,7 @@ class LinkedList:
             previous.next = current.next
             current.next = None
 
+
 def main():
     ll = LinkedList()
     ll._add_to_beginning(5)
@@ -73,7 +74,7 @@ def main():
     ll.__repr__()
 
     #print (ll._search(50))
-    print (ll._search(-50))
+    print(ll._search(-50))
 
     ll._remove(100)
     ll.__repr__()

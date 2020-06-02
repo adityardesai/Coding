@@ -1,10 +1,10 @@
 from collections import defaultdict, deque
-
 """
 Implementation of Graph Data Strucutres using Adjacency Lists
 """
-class Graph:
 
+
+class Graph:
     def __init__(self):
         self.graph = defaultdict(list)
 
@@ -19,7 +19,7 @@ class Graph:
 
         while (len(queue)):
             node = queue.popleft()
-            print (node)
+            print(node)
             for neighbor in self.graph[node]:
                 if neighbor not in visited:
                     queue.append(neighbor)
@@ -30,7 +30,7 @@ class Graph:
         stack = deque()
         stack.append(start_node)
 
-        while(len(stack)):
+        while (len(stack)):
             node = stack.pop()
             if node not in visited:
                 print(node)
@@ -42,7 +42,7 @@ class Graph:
     def _print_graph(self):
         if self.graph is not None:
             for node in self.graph:
-                print (str(node) + " is connected to " + str(self.graph[node]))
+                print(str(node) + " is connected to " + str(self.graph[node]))
 
 
 def main_bfs_iterative():
@@ -57,6 +57,7 @@ def main_bfs_iterative():
 
     graph._print_graph()
     graph._breadth_first_traversal(2)
+
 
 def main_dfs_iterative():
     g = Graph()

@@ -1,8 +1,8 @@
 class StackEmpty(Exception):
     pass
 
-class Stack:
 
+class Stack:
     def __init__(self):
         self._data = list()
 
@@ -32,12 +32,13 @@ def main():
     stack.push(1)
     stack.push(2)
     stack.push(3)
-    print (" length of stack " + str(len(stack)))
-    print (stack.pop())
-    print (stack.peek())
-    print (stack.pop())
-    print (stack.pop())
-    print (stack.pop())
+    print(" length of stack " + str(len(stack)))
+    print(stack.pop())
+    print(stack.peek())
+    print(stack.pop())
+    print(stack.pop())
+    print(stack.pop())
+
 
 if __name__ == '__main__':
     main()

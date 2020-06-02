@@ -2,7 +2,6 @@ from heapq import *
 
 
 class Point:
-
     def __init__(self, x, y):
         self.x = x
         self.y = y
@@ -25,7 +24,7 @@ def find_closest_points(points, k):
         import pdb
         pdb.set_trace()
 
-    for p in range(k, len(points)-1):
+    for p in range(k, len(points) - 1):
         d1 = p.distance_from_origin()
         if d1 < result[0][0]:
             heappop(result)
@@ -42,5 +41,3 @@ def main():
 
 
 main()
-
-
