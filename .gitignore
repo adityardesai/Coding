@@ -140,3 +140,8 @@ cython_debug/
 
 # IDEA
 .idea/
+
+# JAVA
+out/
+
+
