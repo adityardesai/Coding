@@ -1,3 +1,6 @@
+#https://leetcode.com/problems/merge-k-sorted-lists/
+# TC: O(Nlogk) where k is the number of linked lists.
+# SC: O(1)
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
