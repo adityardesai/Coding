@@ -6,7 +6,6 @@ class ListNode(object):
 
 
 class Solution:
-
     @staticmethod
     def add_two_numbers(l1, l2):
 
