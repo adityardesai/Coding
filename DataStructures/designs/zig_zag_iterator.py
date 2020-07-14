@@ -1,40 +1,28 @@
+# https://leetcode.com/problems/zigzag-iterator/
+# TC:O(1)
+# SC:O(1)
+
+from collections import deque
+
+
 class ZigzagIterator:
     def __init__(self, v1: List[int], v2: List[int]):
-        if not v1 and not v2:
-            return
-
-        self.arr = []
-        self.index = -1
-        self.add_to_list(v1, v2)
-
-    def add_to_list(self, v1, v2):
-
-        i = 0
-        j = 0
-
-        while i < len(v1) and j < len(v2):
-            self.arr.append(v1[i])
-            self.arr.append(v2[j])
-            i += 1
-            j += 1
-
-        while i < len(v1):
-            self.arr.append(v1[i])
-            i += 1
-
-        while j < len(v2):
-            self.arr.append(v2[j])
-            j += 1
+        self.v1 = deque(v1)
+        self.v2 = deque(v2)
+        self.flag = True
 
     def next(self) -> int:
-        self.index += 1
-        return self.arr[self.index]
+        r = None
+        if self.v1:
+            r = self.v1.popleft()
+            if self.v2:
+                self.v2, self.v1 = self.v1, self.v2
+        else:
+            r = self.v2.popleft()
+        return r
 
     def hasNext(self) -> bool:
-        if self.arr:
-            return (self.index + 1) < len(self.arr)
-        else:
-            return -1
+        return len(self.v1) + len(self.v2) > 0
 
 
 # Your ZigzagIterator object will be instantiated and called as such:
