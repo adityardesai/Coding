@@ -33,15 +33,29 @@ class Solution:
             print(node.val)
             node = node.next
 
+    def merge_divide_and_conquer(self, lists):
+        n = len(lists)
+        inc = 1
+        while inc < n:
+            for i in range(0, n - inc, inc * 2):
+                lists[i] = self.merge_two_lists(lists[i], lists[i + inc])
+            inc = inc * 2
+        return lists[0] if inc > 0 else None
+
+    def merge_divide_and_conquer_2(self, lists):
+        if not lists:
+            return None
+        if len(lists) == 1:
+            return lists[0]
+        N = len(lists)
+        mid = N // 2
+        left = self.merge_divide_and_conquer_2(lists[:mid])
+        right = self.merge_divide_and_conquer_2(lists[mid:])
+
+        return self.merge_two_lists(left, right)
+
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
-        amount = len(lists)
-        jump = 1
-        print("amount " + str(amount))
-        print("interval " + str(jump))
-        while jump < amount:
-            for i in range(0, amount - jump, jump * 2):
-                lists[i] = self.merge_two_lists(lists[i], lists[i + jump])
-                print("i " + str(i))
-            jump *= 2
-            print("interval updated " + str(jump))
-        return lists[0] if amount > 0 else None
+        if not lists:
+            return None
+        #return self.merge_divide_and_conquer(lists)
+        return self.merge_divide_and_conquer_2(lists)
