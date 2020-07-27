@@ -14,26 +14,25 @@ class Solution:
         result_list.append(root.val)
         if root.right:
             self.inorder(root.right, result_list)
+
     def brute_force(self, root, k):
         result_list = list()
         self.inorder(root, result_list)
-        return result_list[k-1]
+        return result_list[k - 1]
+
     def inorder_iterative(self, root, k):
-        stack=list()
+        stack = list()
         while stack or root:
             if root:
                 stack.append(root)
-                root=root.left
+                root = root.left
             else:
                 root = stack.pop()
-                k=k-1
-                if k==0:
+                k = k - 1
+                if k == 0:
                     return root.val
                 root = root.right
-        
+
     def kthSmallest(self, root: TreeNode, k: int) -> int:
         #return self.brute_force(root,k)
-        return self.inorder_iterative(root,k)
-        
-        
-        
+        return self.inorder_iterative(root, k)

@@ -9,22 +9,24 @@
 #         self.right = right
 from collections import deque
 
+
 class Solution:
     def helper_level_order(self, root):
-        queue=deque()
+        queue = deque()
         queue.append(root)
-        result=list()
+        result = list()
         while queue:
-            level=len(queue)
+            level = len(queue)
             for i in range(level):
-                node=queue.popleft()
-                if i==level-1:
+                node = queue.popleft()
+                if i == level - 1:
                     result.append(node.val)
                 if node.left:
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
         return result
+
     def rightSideView(self, root: TreeNode) -> List[int]:
         if not root:
             return None

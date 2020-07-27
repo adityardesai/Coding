@@ -13,27 +13,28 @@ class Solution:
         if not root:
             return
         stack = list()
-        pred=None
-        x=None
-        y=None
-        
+        pred = None
+        x = None
+        y = None
+
         while stack or root:
             while root:
                 stack.append(root)
                 root = root.left
-            root=stack.pop()
-            if pred and root.val<pred.val:
-                y=root
+            root = stack.pop()
+            if pred and root.val < pred.val:
+                y = root
                 if not x:
-                    x=pred
-            pred=root
-            root=root.right
-        x.val,y.val=y.val,x.val
+                    x = pred
+            pred = root
+            root = root.right
+        x.val, y.val = y.val, x.val
+
     def recoverTree(self, root: TreeNode) -> None:
         """
         Do not return anything, modify root in-place instead.
         """
-        
+
         if not root:
             return None
         return self.iterative_inorder(root)
