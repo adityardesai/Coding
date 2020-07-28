@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/design-underground-system/
-#
+# TC: O(1)
+# SC: O(P + S^2) P=Passangers S=stations
 class UndergroundSystem:
     def __init__(self):
         self.check_in_data = dict()
