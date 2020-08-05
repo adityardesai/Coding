@@ -1,3 +1,6 @@
+# https://leetcode.com/problems/add-two-numbers/
+# TC: O(max(m,n))
+# SC: O(max(m,n))
 # Definition for singly-linked list.
 class ListNode(object):
     def __init__(self, x):
