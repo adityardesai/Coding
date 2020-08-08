@@ -31,17 +31,18 @@ class Solution:
     def inorder_iterative(self, root):
         stack = list()
         inorder = float('-inf')
-
+        
         while stack or root:
-            while root:
+            if root:
                 stack.append(root)
-                root = root.left
-            root = stack.pop()
-            if root.val <= inorder:
-                return False
-            inorder = root.val
-            root = root.right
-
+                root=root.left
+            else:
+                root=stack.pop()
+                if root.val <= inorder:
+                    return False
+                inorder=root.val
+                root=root.right
+        
         return True
 
     def iterative_helper(self, root):
