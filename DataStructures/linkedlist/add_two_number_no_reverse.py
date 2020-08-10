@@ -30,10 +30,10 @@ class Solution:
             if stack2:
                 sum = sum + stack2.pop()
 
-            carry = sum % 10
+            remainder = sum % 10
             sum = sum // 10
 
-            traverse_ptr.val = carry
+            traverse_ptr.val = remainder
             new_node = ListNode(sum)
             new_node.next = traverse_ptr
             traverse_ptr = new_node
