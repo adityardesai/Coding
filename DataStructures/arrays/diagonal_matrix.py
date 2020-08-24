@@ -1,31 +1,33 @@
 # https://leetcode.com/problems/diagonal-traverse/
 # TC:O(N*M)
 # SC:O(N*M)
-class Solution(object):
-    def findDiagonalOrder(self, matrix):
-        """
-        :type matrix: List[List[int]]
-        :rtype: List[int]
-        """
-        d={}
-		#loop through matrix
-        for i in range(len(matrix)):
-            for j in range(len(matrix[i])):
-				#if no entry in dictionary for sum of indices aka the diagonal, create one
-                if i + j not in d:
-                    d[i+j] = [matrix[i][j]]
+class Solution:
+    def helper(self, matrix):
+        r=len(matrix)
+        c=len(matrix[0])
+        diag=dict()
+        for i in range(r):
+            for j in range(c):
+                if i+j not in diag:
+                    diag[i+j] = [matrix[i][j]]
                 else:
-				#If you've already passed over this diagonal, keep adding elements to it!
-                    d[i+j].append(matrix[i][j])
-		# we're done with the pass, let's build our answer array
-        ans= []
-		#look at the diagonal and each diagonal's elements
-        for entry in d.items():
-			#each entry looks like (diagonal level (sum of indices), [elem1, elem2, elem3, ...])
-			#snake time, look at the diagonal level
-            if entry[0] % 2 == 0:
-				#Here we append in reverse order because its an even numbered level/diagonal. 
-                [ans.append(x) for x in entry[1][::-1]]
+                    diag[i+j].append(matrix[i][j])
+        result=[]
+        for k, v in diag.items():
+            i_plus_j=k
+            values=v
+            if i_plus_j%2==0:
+                v.reverse()
+                for i in v:
+                    result.append(i)
             else:
-                [ans.append(x) for x in entry[1]]
-        return ans
+                for i in v:
+                    result.append(i)
+        return result
+                
+    def findDiagonalOrder(self, matrix: List[List[int]]) -> List[int]:
+        if not matrix:
+            return matrix
+        
+        return self.helper(matrix)
+        
