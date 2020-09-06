@@ -1,6 +1,6 @@
 # https://leetcode.com/problems/word-ladder/
-# TC: O(M^2 * N)
-# SC: O(M^2 * N)
+# TC: O(M * N)
+# SC: O(M * N)
 
 
 class Solution:
