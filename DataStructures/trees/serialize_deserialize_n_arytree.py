@@ -2,6 +2,10 @@
 # TC: O(N)
 # SC: O(N)
 
+# Parent and Children relationship = ['1', '1', 'N', '2', '3', '1', '3', '5', '2', '4', '6', '2', '5', '2', '1', '6', '4', '1']
+# Works only for positive integers lesser than 65K. Thats why using chr - 
+# The chr() method returns a string representing a character whose Unicode code point is an integer.
+
 """
 # Definition for a Node.
 class Node(object):
