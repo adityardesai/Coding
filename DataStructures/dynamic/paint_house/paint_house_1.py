@@ -17,7 +17,6 @@ class Solution:
         self.costs = None
         self.memo = dict()
     def paint_brute_force(self, house, paint):
-        
         total_cost = self.costs[house][paint]
         if house == len(self.costs)-1:
             pass
@@ -59,11 +58,37 @@ class Solution:
         b=self.paint_brute_force(0,1)
         c=self.paint_brute_force(0,2)
         return min(a,b,c)
-    
-    def minCost(self, costs: List[List[int]]) -> int:
+    def dynamic_programming(self, costs):
+        n=len(costs)
+        if n==0: return 0
+        k=3
+              
+        for house in range(1,n):
+            min_color=None
+            second_min_color=None
+            
+            for color in range(k):
+                cost = costs[house-1][color]
+                
+                if min_color is None or cost<costs[house-1][min_color]:
+                    second_min_color = min_color
+                    min_color=color
+                elif second_min_color is None or cost<costs[house-1][second_min_color]:
+                    second_min_color=color
         
+            for color in range(k):
+                if color==min_color:
+                    costs[house][color] += costs[house-1][second_min_color]
+                else:
+                    costs[house][color] += costs[house-1][min_color]
+        
+        return min(costs[-1])
+    
+    def minCost(self, costs: List[List[int]]) -> int:   
         if not costs:
             return 0
         self.costs=costs
         #return self.brute_force()
-        return self.memoization()
+        #return self.memoization()
+        return self.dynamic_programming(costs)
+        
