@@ -15,7 +15,9 @@ SC:
 class Solution:
     def __init__(self):
         self.costs = None
+        self.memo = dict()
     def paint_brute_force(self, house, paint):
+        
         total_cost = self.costs[house][paint]
         if house == len(self.costs)-1:
             pass
@@ -27,16 +29,41 @@ class Solution:
             total_cost += min(self.paint_brute_force(house+1,0), self.paint_brute_force(house+1,1))
         
         return total_cost
+    
+    def paint_memoization(self, house, paint):
+        if (house,paint) in self.memo:
+            return self.memo[(house, paint)]
             
+        total_cost = self.costs[house][paint]
+        
+        if house == len(self.costs)-1:
+            pass
+        elif paint==0:
+            total_cost += min(self.paint_brute_force(house+1,1), self.paint_brute_force(house+1,2))
+        elif paint==1:
+            total_cost += min(self.paint_brute_force(house+1,0), self.paint_brute_force(house+1,2))
+        elif paint==2:
+            total_cost += min(self.paint_brute_force(house+1,0), self.paint_brute_force(house+1,1))
+        
+        self.memo[(house,paint)] = total_cost
+        return total_cost
+    
     def brute_force(self):
         a=self.paint_brute_force(0,0)
         b=self.paint_brute_force(0,1)
         c=self.paint_brute_force(0,2)
         return min(a,b,c)
+    
+    def memoization(self):
+        a=self.paint_brute_force(0,0)
+        b=self.paint_brute_force(0,1)
+        c=self.paint_brute_force(0,2)
+        return min(a,b,c)
+    
     def minCost(self, costs: List[List[int]]) -> int:
         
         if not costs:
             return 0
         self.costs=costs
-        return self.brute_force()
-        
+        #return self.brute_force()
+        return self.memoization()
