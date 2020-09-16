@@ -1,5 +1,6 @@
 """
-You have a grid of size n x 3 and you want to paint each cell of the grid with exactly one of the three colours: Red, Yellow or Green while making sure that no two adjacent cells have the same colour (i.e no two cells that share vertical or horizontal sides have the same colour).
+You have a grid of size n x 3 and you want to paint each cell of the grid with exactly one of the three colours: 
+Red, Yellow or Green while making sure that no two adjacent cells have the same colour (i.e no two cells that share vertical or horizontal sides have the same colour).
 
 You are given n the number of rows of the grid.
 
@@ -8,9 +9,12 @@ Return the number of ways you can paint this grid. As the answer may grow large,
  
 Key Note:
 
-There are only two possibilities to form a non-adjacent row: 3 colors combination (use all three colors, e.g., RYG) and 2 color combination (use only two of three colors, e.g., RYR).
-We add the new row one by one. Apart from its inner adjacent relation, every new added row only relies on the previous one row (new added row is only adjacent with the row above it).
-Every color combination follows the same pattern indicated below. 3-color combination can generate two 3-color combination, and two 2-color combination for the next round. 2-color combination can generate two 3-color combination, and three 2-color combination for the next round.
+There are only two possibilities to form a non-adjacent row: 3 colors combination (use all three colors, e.g., RYG) and 2 color combination 
+(use only two of three colors, e.g., RYR).
+We add the new row one by one. Apart from its inner adjacent relation, every new added row only relies on the previous one row 
+(new added row is only adjacent with the row above it).
+Every color combination follows the same pattern indicated below. 3-color combination can generate two 3-color combination, 
+and two 2-color combination for the next round. 2-color combination can generate two 3-color combination, and three 2-color combination for the next round.
 image
 
 Let's try to have a math eqution to show the change above.
