@@ -6,7 +6,21 @@ You are given n the number of rows of the grid.
 Return the number of ways you can paint this grid. As the answer may grow large, the answer must be computed modulo 10^9 + 7.
 
  
+Key Note:
 
+There are only two possibilities to form a non-adjacent row: 3 colors combination (use all three colors, e.g., RYG) and 2 color combination (use only two of three colors, e.g., RYR).
+We add the new row one by one. Apart from its inner adjacent relation, every new added row only relies on the previous one row (new added row is only adjacent with the row above it).
+Every color combination follows the same pattern indicated below. 3-color combination can generate two 3-color combination, and two 2-color combination for the next round. 2-color combination can generate two 3-color combination, and three 2-color combination for the next round.
+image
+
+Let's try to have a math eqution to show the change above.
+The number of 3-color combination for round n is: S(n). The number of 2-color combination for round n is T(n).
+Thus, we can have two simple math equations reflecting the relation between current round (n) with next round (n + 1) for both 3-color-combination and 2-color-combination.
+
+S(n + 1) = 2 * S(n) + 2 * T(n)
+T(n + 1) = 2 * S(n) + 3 * T(n)
+
+Ref:https://leetcode.com/problems/number-of-ways-to-paint-n-3-grid/discuss/574943/Java-Detailed-Explanation-with-Graph-Demo-DP-Easy-Understand
 """
 # https://leetcode.com/problems/number-of-ways-to-paint-n-3-grid/
 # TC: 
