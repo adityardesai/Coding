@@ -24,6 +24,11 @@ Thus, we can have two simple math equations reflecting the relation between curr
 S(n + 1) = 2 * S(n) + 2 * T(n)
 T(n + 1) = 2 * S(n) + 3 * T(n)
 
+init: for the single row, there are C(3, 3) * 3! = 6 3-color combinations, and C(3, 2) * 2 = 6 2-color combinations.
+C(3, 3) * 3! means: choose 3 colors out of 3, and, first cell: 3 possibilities, second cell: 2 possibilities, third cell: only 1 possibility.
+C(3, 2) * 2 means: choose 2 colors out of 3, and, there are only two ways: ABA or BAB.
+
+
 Ref:https://leetcode.com/problems/number-of-ways-to-paint-n-3-grid/discuss/574943/Java-Detailed-Explanation-with-Graph-Demo-DP-Easy-Understand
 """
 # https://leetcode.com/problems/number-of-ways-to-paint-n-3-grid/
