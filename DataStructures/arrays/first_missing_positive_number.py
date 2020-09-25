@@ -22,7 +22,7 @@ class Solution:
                     nums[correct_pos] = -1 * nums[correct_pos]
         
         for i in range(n):
-            if nums[i]>=0:
+            if nums[i]>0:
                 return i+1
         
         return n+1
