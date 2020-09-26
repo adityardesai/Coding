@@ -6,7 +6,7 @@ horizontally or vertically neighboring. The same letter cell may not be used mor
 
 
 # https://leetcode.com/problems/word-search
-# TC: O(N * 4^L) : N=number of cell and L=length of word to be matched
+# TC: O(N * 3^L) : N=number of cell and L=length of word to be matched
 # SC: O(L)
 
 """
