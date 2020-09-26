@@ -22,7 +22,7 @@ class Solution(object):
         if root1.val != root2.val:
             return False
         
-        return self.sameTree(root1.left, root2.left) and self.sameTree(root1.right, root2.right)
+        return root1.val == root2.val and self.sameTree(root1.left, root2.left) and self.sameTree(root1.right, root2.right)
     
     def recursive_helper(self, s, t):
         if not s:
