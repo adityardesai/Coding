@@ -1,6 +1,15 @@
-# https://leetcode.com/problems/word-search/solution/
+"""
+Given a 2D board and a word, find if the word exists in the grid.
+
+The word can be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those
+horizontally or vertically neighboring. The same letter cell may not be used more than once.
+
+
+# https://leetcode.com/problems/word-search
 # TC: O(N * 4^L) : N=number of cell and L=length of word to be matched
 # SC: O(L)
+
+"""
 class Solution:
     def _is_valid(self, board, r, c):
         if r < 0 or c < 0 or r > len(board) - 1 or c > len(board[0]) - 1:
