@@ -11,6 +11,16 @@ Given the below binary tree and sum = 22,
 https://leetcode.com/problems/path-sum-ii/
 TC: O(N^2)
 SC: O(N)
+
+Time Complexity:In the worst case, we could have a complete binary tree and if that is the case, then there would be N/2N/2 leafs. 
+For every leaf, we perform a potential O(N)O(N) operation of copying over the pathNodes nodes to a new list to be added to the final pathsList. 
+Hence, the complexity in the worst case could be O(N^2)
+
+Space Complexity: O(N)O(N). The space complexity, like many other problems is debatable here. 
+I personally choose not to consider the space occupied by the output in the space complexity. So, all the new lists that we create for the paths are actually
+a part of the output and hence, don't count towards the final space complexity. The only additional space that we use is the pathNodes list to keep track of nodes along a branch.
+We could include the space occupied by the new lists (and hence the output) in the space complexity and in that case the space would be O(N^2). 
+There's a great answer on Stack Overflow about whether to consider input and output space in the space complexity or not. I prefer not to include them.
 """
 
 # Definition for a binary tree node.
