@@ -19,9 +19,8 @@ class Solution:
         if not node:
             return False
         sum_so_far-=node.val
-        if not node.left and not node.right:
-            if sum_so_far==0:
-                return True
+        if not node.left and not node.right and sum_so_far==node.val:
+            return True
         return self.helper(node.left, sum_so_far) or self.helper(node.right, sum_so_far)
     
     def iterative_helper(self, node, sum_so_far):
@@ -37,6 +36,7 @@ class Solution:
                 stack.append((node.right, sum_so_far-node.right.val))
             if node.left:
                 stack.append((node.left, sum_so_far-node.left.val))
+        
         return False
         
     def hasPathSum(self, root: TreeNode, sum: int) -> bool:
