@@ -16,3 +16,28 @@ class Solution:
 
         print(hash_map)
         return count
+================================================================
+
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        if not nums:
+            return -1
+        hash_map=dict()
+        cummulative=0
+        count=0
+        
+        for i in range(len(nums)):
+            num=nums[i]
+            cummulative+=num
+            
+            if cummulative==k:
+                count+=1
+            
+            if hash_map.get(cummulative-k):
+                count+=hash_map[cummulative-k]
+            
+            hash_map[cummulative] = hash_map.get(cummulative,0) + 1
+        
+        return count
+            
+        
