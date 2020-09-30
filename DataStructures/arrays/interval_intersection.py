@@ -12,27 +12,30 @@ SC: O(N+M)
 
 
 class Solution:
-    def merge_intervals(self, A, B):
+    def intervalIntersection(self, A: List[List[int]], B: List[List[int]]) -> List[List[int]]:
         
-        result=list()
         i=0
         j=0
+        result=list()
         
         while i<len(A) and j<len(B):
-            start=max(A[i][0], B[j][0])
-            end=min(A[i][1], B[j][1])
+            a_start=A[i][0]
+            a_end=A[i][1]
             
-            if start<=end:
-                result.append([start, end])
-
-            if A[i][1]<B[j][1]:
+            b_start=B[j][0]
+            b_end=B[j][1]
+            
+            #cris cross
+            if a_start<=b_end and b_start<=a_end:
+                result.append([max(a_start, b_start), min(a_end, b_end)])
+            
+            
+            if a_end<=b_end:
                 i+=1
             else:
                 j+=1
+            
         
         return result
-            
-    def intervalIntersection(self, A: List[List[int]], B: List[List[int]]) -> List[List[int]]:
- 
-        return self.merge_intervals(A,B)
+                
         
