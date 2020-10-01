@@ -8,6 +8,7 @@
 # 3. when last character is added, make node.isEnd = True indicate that the current node is end of the sentence
 # 4. decrement hotness -= because by negating, we can sort as ascending order later.
 
+Ref: https://leetcode.com/problems/design-search-autocomplete-system/discuss/460803/Python-Trie-Solution-easy-to-understand-with-explanation
 
 """
 
