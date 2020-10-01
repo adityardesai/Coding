@@ -4,8 +4,8 @@ https://leetcode.com/problems/word-break-ii/solution/
 Each node in the graph represents a postfix of the input string. In particular, we have some nodes with an empty string, which indicates the end of the input string.
 Each edge indicates the reduction from one postfix to another. The label on top of each edge indicates the word that is used to trigger the reduction.
 
-TC: O(N^2 +2^N+W)
-SC: O(N^2 +2^N+W)
+TC: O(N^2 +2^N+W) N = length of input
+SC: O(N^2 +2^N+W) W = cost of constructing word_set
 """
 
 class Solution:
