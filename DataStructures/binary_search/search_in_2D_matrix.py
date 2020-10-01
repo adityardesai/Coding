@@ -44,6 +44,9 @@ class Solution:
 ==========================================
 Divide and Conquer
 
+TC:O(N+M)
+SC:O(1)
+
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         M = len(matrix)
