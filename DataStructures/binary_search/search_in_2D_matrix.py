@@ -41,3 +41,25 @@ class Solution:
                 left = mid_idx+1
                     
         return False
+==========================================
+Divide and Conquer
+
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        M = len(matrix)
+        if M == 0:
+            return False
+        
+        N = len(matrix[0])
+        
+        i=M-1
+        j=0
+        while i>=0 and j<N:
+            if target < matrix[i][j]:
+                i = i-1
+            elif target > matrix[i][j]:
+                j = j+1
+            else:
+                return True
+        return False
+        
