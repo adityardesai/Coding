@@ -1,4 +1,7 @@
 '''
+
+https://leetcode.com/discuss/interview-question/380650/Bloomberg-or-Phone-Screen-or-Candy-Crush-1D
+
 Write a function to crush candy in a one dimensional board.
 
 In candy crushing games, groups of like items are removed from the
