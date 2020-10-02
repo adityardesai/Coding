@@ -6,6 +6,8 @@ Return the minimum number of semesters needed to study all courses.  If there is
 
 Ref: https://leetcode.com/problems/parallel-courses/discuss/519251/Python-Topological-Sort-%2B-BFS-detailed-comment-and-explanation-on-each-line
 
+TC: O(V+E)
+SC: O(V+E)
 
 """
 
