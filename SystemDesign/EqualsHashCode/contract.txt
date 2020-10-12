@@ -56,3 +56,18 @@ Override equals() and hashCode() for value objects
 Be aware of the traps of extending classes that have overridden equals() and hashCode()
 Consider using an IDE or a third-party library for generating the equals() and hashCode() methods
 Consider using EqualsVerifier to test our implementation
+
+====================================================================================================================================
+
+Standard hashCode() Implementations
+The better the hashing algorithm that we use to compute hash codes, the better will the performance of hash tables be.
+
+Let's have a look at a “standard” implementation that uses two primes numbers to add even more uniqueness to computed hash codes:
+
+@Override
+public int hashCode() {
+    int hash = 7;
+    hash = 31 * hash + (int) id;
+    hash = 31 * hash + (name == null ? 0 : name.hashCode());
+    hash = 31 * hash + (email == null ? 0 : email.hashCode());
+    return hash;
