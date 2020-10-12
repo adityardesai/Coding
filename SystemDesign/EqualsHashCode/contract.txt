@@ -1,0 +1,58 @@
+https://www.baeldung.com/java-equals-hashcode-contracts
+
+The Object class defines both the equals() and hashCode() methods – which means that these two methods 
+are implicitly defined in every Java class, including the ones we create:
+
+class Money {
+    int amount;
+    String currencyCode;
+}
+
+Money income = new Money(55, "USD");
+Money expenses = new Money(55, "USD");
+boolean balanced = income.equals(expenses)
+
+Let's override the equals() method so that it doesn't consider only object identity, but rather also the value of the two relevant properties:
+
+@Override
+public boolean equals(Object o) {
+    if (o == this)
+        return true;
+    if (!(o instanceof Money))
+        return false;
+    Money other = (Money)o;
+    boolean currencyCodeEquals = (this.currencyCode == null && other.currencyCode == null)
+      || (this.currencyCode != null && this.currencyCode.equals(other.currencyCode));
+    return this.amount == other.amount && currencyCodeEquals;
+}
+
+*equals() Contract*
+
+Java SE defines a contract that our implementation of the equals() method must fulfill. Most of the criteria are common sense. The equals() method must be:
+
+reflexive: an object must equal itself
+symmetric: x.equals(y) must return the same result as y.equals(x)
+transitive: if x.equals(y) and y.equals(z) then also x.equals(z)
+consistent: the value of equals() should change only if a property that is contained in equals() changes (no randomness allowed)
+====================================================================================================================================
+hashCode() returns an integer representing the current instance of the class. We should calculate this value consistent with the definition of equality for the class. 
+Thus if we override the equals() method, we also have to override hashCode().
+
+hashCode() Contract
+Java SE also defines a contract for the hashCode() method. A thorough look at it shows how closely related hashCode() and equals() are.
+
+All three criteria in the contract of hashCode() mention in some ways the equals() method:
+
+internal consistency: the value of hashCode() may only change if a property that is in equals() changes
+equals consistency: objects that are equal to each other must return the same hashCode
+collisions: unequal objects may have the same hashCode
+
+=====================================================================================================================================
+
+In this article, we've discussed the equals() and hashCode() contracts. We should remember to:
+
+Always override hashCode() if we override equals()
+Override equals() and hashCode() for value objects
+Be aware of the traps of extending classes that have overridden equals() and hashCode()
+Consider using an IDE or a third-party library for generating the equals() and hashCode() methods
+Consider using EqualsVerifier to test our implementation
