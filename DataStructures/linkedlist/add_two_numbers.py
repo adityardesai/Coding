@@ -8,48 +8,40 @@ class ListNode(object):
         self.next = None
 
 
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 class Solution:
-    @staticmethod
-    def add_two_numbers(l1, l2):
-
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        
         if not l1:
             return l2
-
+        
         if not l2:
             return l1
-
-        result_list = ListNode(0)
-        traverse = result_list
-        carry = 0
-
+        
+        result = ListNode(0)
+        traverse = result
+        carry=0
+        
         while l1 or l2:
-            temp_sum = l1.val + l2.val + carry
-            new_node = ListNode(temp_sum % 10)
-            carry = temp_sum // 10
+            x=l1.val if l1 else 0
+            y=l2.val if l2 else 0
+            temp_sum = x+y+carry
+            new_node = ListNode(temp_sum%10)
+            carry = temp_sum//10
             traverse.next = new_node
             traverse = new_node
-
+            
             if l1:
-                l1 = l1.next
+                l1=l1.next
             if l2:
-                l2 = l2.next
-
+                l2=l2.next
+                
+        
         if carry:
             traverse.next = ListNode(carry)
-
-        return result_list.next
-
-
-l1_input = ListNode(2)
-l1_input.next = ListNode(4)
-l1_input.next.next = ListNode(3)
-
-l2_input = ListNode(5)
-l2_input.next = ListNode(6)
-l2_input.next.next = ListNode(4)
-
-result = Solution().add_two_numbers(l1_input, l2_input)
-
-while result:
-    print(result.val)
-    result = result.next
+        
+        return result.next
